@@ -1,0 +1,13 @@
+<%- include("partials/head.ejs") %>
+
+<main>
+    <h2>Your Custom Poem</h2>
+     <!-- keeps my format intact -->
+     <div style="white-space: pre-line;"><%= poem.content %></div>
+         <form action="/users/logout" method="POST">
+        </form>
+        <a href="/">Back to Home</a>
+
+</main>
+
+<%- include("partials/footer.ejs") %>

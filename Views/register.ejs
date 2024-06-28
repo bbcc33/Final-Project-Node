@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include("partials/head.ejs") %>
+    <title>Register Here</title>
+</head>
+<body>
+
+<main>
+    <% if (errors.length > 0) { %>
+        <div class="alert alert-danger">
+            <% errors.forEach(error => { %>
+                <p><%= error %></p>
+            <% }); %>
+        </div>
+    <% } %>
+
+    <form action='/users/register' method="POST">
+        <div>
+            <label for="username">Enter your username:</label>
+            <input type="text" id="username" name="username" />
+        </div>
+        <div>
+            <label for="password">Enter your password:</label>
+            <input type="password" id="password" name="password" />
+        </div>
+        <div>
+            <label for="password1">Confirm your password:</label>
+            <input type="password" id="password1" name="password1" />
+        </div>
+        <div>
+            <a href="/">
+                <button type="button">Cancel</button>
+            </a>
+            <button type="submit">Register</button>
+        </div>
+    </form>
+</main>
+
+<%- include("partials/footer.ejs") %>
+
+</body>
+</html>

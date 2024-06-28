@@ -1,0 +1,31 @@
+<%- include("partials/head.ejs") %>
+
+<main>
+    <h2>Enter Your Words</h2>
+    <form action="/poems/generatePoem" method="POST">
+        <div>
+            <label for="noun">Noun(Place)(Plural):</label>
+            <input type="text" id="noun" name="noun" required>
+        </div>
+        <div>
+            <label for="noun2">Noun(Person, Animal):</label>
+            <input type="text" id="noun2" name="noun2" required>
+        </div>
+
+        <div>
+            <label for="verb">Verb(Present Tense):</label>
+            <input type="text" id="verb" name="verb" required>
+        </div>
+        <div>
+            <label for="verb2">Verb(Present Tense):</label>
+            <input type="text" id="verb2" name="verb2" required>
+        </div>
+        <div>
+            <label for="adjective">Adjective:</label>
+            <input type="text" id="adjective" name="adjective" required>
+        </div>
+        <button type="submit">Generate Poem</button>
+    </form>
+</main>
+
+<%- include("partials/footer.ejs") %>

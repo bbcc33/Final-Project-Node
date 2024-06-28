@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home Page</title>
+</head>
+<body>
+    <!-- <%- include("partials/header.ejs") %> -->
+    <h1>Welcome to BB's Poem Generator</h1>
+    <% if (user) { %>
+        <a href="/poems/wordForm">Create Your Poem</a>
+    <% } else { %>
+        <div>
+            <a href="/users/logon">
+            <button type="submit">Logon</button>
+            </a>
+            <a href="/users/register">
+                <button type="submit">Register</button>
+                </a>
+        </div>
+        <!-- <a href="/users/logon"">Log In</a> -->
+        <!-- <a href="/users/register">Regster</a> -->
+    <% } %>
+    <%- include("partials/footer.ejs") %>
+</body>
+</html>
