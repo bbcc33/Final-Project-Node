@@ -1,17 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const passport = require('passport');
-const poemController = require('../Controllers/poemControllers');
-const { isAuthenticated } = require('../Middleware/authMiddleware');
-
-const {
-    generatePoem,
-    viewPoem,
-    getWordForm,
-} = require('../Controllers/poemControllers');
-
-// Apply the isAuthenticated middleware to all routes
-router.use(isAuthenticated);
+const { getWordForm, generatePoem, viewPoem } = require('../Controllers/poemControllers');
 
 router.get('/wordForm', getWordForm);
 router.post('/generatePoem', generatePoem);

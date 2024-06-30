@@ -47,20 +47,26 @@
 //         req.flash('error', 'You need to be logged in to view this page');
 //         res.redirect('/users/logon');
 //     }
-// };
-
-const Poem = require('../Models/Poem');
-const poemUser = require('../Models/User');
+// }
 
 
-exports.isAuthenticated = (req, res, next) => {
-    const { username } = req.body;
+// exports.isAuthenticated = (req, res, next) => {
+//     if (!req.user) {
+//       console.log("attempting authentication")
+//       req.flash("error", "You can't access that page before logon.");
+//       res.redirect("/");
+//     } else {
+//       next();
+//     }
+//   };
 
-    if (!req.user) {
-      console.log("attempting authentication")
-      req.flash("error", "You can't access that page before logon.");
-      res.redirect("/");
-    } else {
-      next();
-    }
-  };
+const authMiddleware = (req, res, next) => {
+  if (!req.user) {
+    req.flash("error", "You can't access that page before logon.");
+    res.redirect("/");
+  } else {
+    next();
+  }
+};
+
+module.exports = authMiddleware;

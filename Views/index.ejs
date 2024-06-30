@@ -4,13 +4,14 @@
     <title>Home Page</title>
 </head>
 <body>
-    <!-- <%- include("partials/header.ejs") %> -->
     <h1>Welcome to BB's Poem Generator</h1>
     <% if (user) { %>
-        <a href="/poems/wordForm">Create Your Poem</a>
-        <a href="/users/logon">
-            <button type="submit">Logon</button>
-            </a>
+        <a href="/poems/wordForm">
+            <button type="submit">Create Your Poem</button>
+        </a>
+        <form action="/users/logout" method="POST">
+                <button type="submit">Logout</button>
+        </form>
     <% } else { %>
         <div>
             <a href="/users/logon">

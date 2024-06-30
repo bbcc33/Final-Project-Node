@@ -18,7 +18,7 @@ module.exports = function () {
                 if (!isMatch) {
                     return done(null, false, { message: 'Incorrect password.' });
                 }
-
+                console.log("Successful Authentication");
                 return done(null, user);
             } catch (err) {
                 return done(err);
@@ -27,10 +27,12 @@ module.exports = function () {
     ));
 
     passport.serializeUser((user, done) => {
+        console.log("Serializing User");
         done(null, user.id);
     });
 
     passport.deserializeUser(async (id, done) => {
+        console.log("Deserializing User");
         try {
             const user = await User.findById(id);
             done(null, user);

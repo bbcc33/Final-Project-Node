@@ -11,6 +11,8 @@ const rateLimit = require("express-rate-limit");
 const mongoose = require("mongoose");
 
 require("dotenv").config();
+require("express-async-errors");
+
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -32,8 +34,8 @@ app.use(limiter);
 const mongoURI = process.env.MONGO_URI;
 mongoose.connect(mongoURI, {
   //deprecated
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
+  // useNewUrlParser: true,
+  // useUnifiedTopology: true,
 });
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "MongoDB connection error:"));
@@ -54,8 +56,9 @@ store.on("error", function (error) {
 
 const sessionParams = {
   secret: process.env.SESSION_SECRET,
-  resave: false,
-  saveUninitialized: false,
+  //these seem to have an impact on how the page renders
+  resave: true,
+  saveUninitialized: true,
   store: store,
   cookie: { secure: false, sameSite: "strict" },
 };
@@ -76,12 +79,12 @@ app.use(passport.session());
 app.use(require("./Middleware/storeLocals"));
 
 
-// app.use((req, res, next) => {
-//   res.locals.user = req.user || null;
-//   res.locals.info = req.flash("info");
-//   res.locals.errors = req.flash("error");
-//   next();
-// });
+app.use((req, res, next) => {
+  res.locals.user = req.user || null;
+  res.locals.info = req.flash("info");
+  res.locals.errors = req.flash("error");
+  next();
+});
 
 app.get('/', (req, res) => {
   res.render('index'); 
