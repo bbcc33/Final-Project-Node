@@ -18,4 +18,3 @@ router.get('/wordForm', poemControllers.getWordForm);
 router.post('/logout', userControllers.logout);
 
 module.exports = router;
-

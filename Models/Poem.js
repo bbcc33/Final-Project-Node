@@ -1,12 +1,6 @@
 const mongoose = require('mongoose');
 
 const PoemSchema = new mongoose.Schema({
-    // user: {
-    //     type: mongoose.Schema.Types.ObjectId,
-    //     // ref: 'poemUser',
-    //     ref: user,
-    //     required: true,
-    // },
     title: {
         type: String,
         required: true,
@@ -23,4 +17,4 @@ const PoemSchema = new mongoose.Schema({
 
 const Poem = mongoose.model('Poem', PoemSchema);
 
-module.exports = Poem
+module.exports = Poem;

@@ -14,6 +14,7 @@
     "bcryptjs": "^2.4.3",
     "connect-flash": "^0.1.1",
     "connect-mongodb-session": "^5.0.0",
+    "cookie-session": "^2.1.0",
     "csrf": "^3.1.0",
     "csurf": "^1.11.0",
     "dotenv": "^16.4.5",
@@ -27,8 +28,12 @@
     "helmet": "^7.1.0",
     "host-csrf": "^1.0.2",
     "mongoose": "^8.4.3",
+    "mongoose-unique-validator": "^5.0.1",
     "passport": "^0.7.0",
     "passport-local": "^1.0.0",
+    "passport-local-mongoose": "^8.0.0",
+    "passport-openid": "^0.4.0",
+    "passport-openidconnect": "^0.1.2",
     "xss-clean": "^0.1.4"
   },
   "devDependencies": {

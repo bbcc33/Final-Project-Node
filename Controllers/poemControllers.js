@@ -1,21 +1,40 @@
 const Poem = require('../Models/Poem');
+const poemUser = require('../Models/User');
 
 exports.getWordForm = (req, res) => {
     res.render('wordForm');
 };
 
 exports.generatePoem = async (req, res) => {
-    console.log(req.user.username);
-    console.log(req.user);
+    const { username, noun, noun2, verb, verb2, adjective } = req.body;
+
+    console.log("Getting username #1:", username);
+
+
     try {
-        if (!req.user || !req.user.username) {
+        if (!username) {
             console.log('User not authenticated');
             throw new Error('User not authenticated');
         }
 
-        console.log('User authenticated for generating poem:', req.user);
+        const user = await poemUser.findOne ({ username });
 
-        const { noun, noun2, verb, verb2, adjective } = req.body;
+        if(!user) {
+            console.log('User not found');
+            throw new Error('User not found');
+        }
+        
+        console.log('User authenticated for generating poem:', username);
+
+    console.log("Getting username #2:", username);
+    // try {
+    //     if (!req.user) {
+    //         console.log('User not authenticated');
+    //         throw new Error('User not authenticated');
+    //     }
+
+    //     console.log('User authenticated for generating poem:', req.user);
+
 
         const poemContent = `High above the ${noun} so high, 
         there lived a ${noun2} so sweet and nigh. 
@@ -27,10 +46,11 @@ exports.generatePoem = async (req, res) => {
         const createdPoem = await Poem.create({
             title: 'Your Custom Poem',
             content: poemContent,
-            createdBy: req.user.username
+            createdBy: user._id
+            // createdBy: req.user
         });
-        console.log('user:', req.user.username, req.user, 'poem')
 
+        console.log('user:', req.user, 'poem')
 
         res.render('viewPoem', { poem: createdPoem });
     } catch (err) {

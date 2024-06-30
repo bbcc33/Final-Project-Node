@@ -1,15 +1,16 @@
 const mongoose = require('mongoose');
 
-const connectDB = async (url) => {
+const connectDB = (url) => {
   try {
-    await mongoose.connect(url, {
-      //deprecated
+    mongoose.connect(url, {
       // useNewUrlParser: true,
       // useUnifiedTopology: true,
+      // useFindAndModify: false, 
     });
     console.log('MongoDB Connected');
   } catch (error) {
     console.error('MongoDB Connection Error:', error.message);
+    process.exit(1);
   }
 };
 

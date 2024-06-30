@@ -1,6 +1,4 @@
-
 const storeLocals = (req, res, next) => {
-
     if (req.user) {
         res.locals.user = req.user;
     } else {
@@ -10,5 +8,4 @@ const storeLocals = (req, res, next) => {
     res.locals.errors = req.flash("error");
     next();
 };
-
 module.exports = storeLocals;
