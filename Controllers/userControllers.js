@@ -1,6 +1,6 @@
 const User = require('../Models/User');
 // const bcrypt = require('bcryptjs');
-const parseVErr = require("../util/parseValidationErrs");
+const parseVErr = require("../Util/parseValidationErrors");
 
 exports.getRegister = (req, res) => {
     res.render('register');
